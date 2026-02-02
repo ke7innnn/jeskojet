@@ -7,9 +7,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 // Register ScrollTrigger
+import { useLoading } from "@/context/LoadingContext";
+
+// Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 export default function WindowZoom() {
+    const { isLoading } = useLoading();
     const containerRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
     const textLeftRef = useRef<HTMLDivElement>(null);
@@ -18,7 +22,7 @@ export default function WindowZoom() {
     const logoRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
-        if (!containerRef.current || !overlayRef.current || !wrapperRef.current || !logoRef.current) return;
+        if (isLoading || !containerRef.current || !overlayRef.current || !wrapperRef.current || !logoRef.current) return;
 
         // Performance: Set GSAP defaults for GPU acceleration
         gsap.defaults({
@@ -133,7 +137,7 @@ export default function WindowZoom() {
             ease: "power1.inOut"
         }, 0.8);
 
-    }, { scope: containerRef });
+    }, { scope: containerRef, dependencies: [isLoading] });
 
     return (
         <div ref={containerRef} className="relative h-[300vh] z-50 pointer-events-none">
