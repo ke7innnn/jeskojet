@@ -23,7 +23,7 @@ export default function Header() {
 
     // SMOOTH FADE-IN - All together
     useEffect(() => {
-        const timeline = gsap.timeline({ delay: 0.5 });
+        const timeline = gsap.timeline({ delay: 1.5 });
 
         // Fade in nav items (all at once)
         timeline.fromTo(

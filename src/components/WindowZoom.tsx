@@ -28,7 +28,7 @@ export default function WindowZoom() {
 
         // SMOOTH CINEMATIC FADE IN - All text together
         const cinematicTimeline = gsap.timeline({
-            delay: 0.5
+            delay: 1.5
         });
 
         // Fade in left text

@@ -25,7 +25,7 @@ export default function WelcomeScreen({ onComplete }: { onComplete?: () => void 
         window.addEventListener('touchmove', preventScroll, options);
         window.addEventListener('keydown', preventScroll, options); // Blocks arrow keys/space
 
-        // UNLOCK after 4 seconds total
+        // UNLOCK after 2 seconds total (0.5s visible + 1.5s fade)
         const unlockTimer = setTimeout(() => {
             window.removeEventListener('wheel', preventScroll, options);
             window.removeEventListener('touchmove', preventScroll, options);
@@ -35,12 +35,12 @@ export default function WelcomeScreen({ onComplete }: { onComplete?: () => void 
             document.documentElement.style.overflow = '';
 
             if (onComplete) onComplete();
-        }, 4000);
+        }, 2000);
 
-        // Start fade out at 2 seconds
+        // Start fade out at 0.5 seconds
         const fadeTimer = setTimeout(() => {
             setIsVisible(false);
-        }, 2000);
+        }, 500);
 
         return () => {
             window.removeEventListener('wheel', preventScroll, options);
