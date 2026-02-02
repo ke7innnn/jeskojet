@@ -15,12 +15,12 @@ export default function WelcomeScreen({ onComplete }: { onComplete?: () => void 
         const timer = setTimeout(() => {
             setIsVisible(false);
 
-            // Wait for exit animation (1.5s) to complete before enabling scroll
+            // Wait for exit animation (1.5s) + minimal buffer to complete before enabling scroll
             setTimeout(() => {
                 document.body.style.overflow = '';
                 document.documentElement.style.overflow = '';
                 if (onComplete) onComplete();
-            }, 1500);
+            }, 2000);
         }, 2000);
 
         return () => {
