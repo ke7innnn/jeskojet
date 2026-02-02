@@ -8,12 +8,14 @@ import SkyBackground from "@/components/SkyBackground";
 import Header from "@/components/Header";
 import ScrollAnimatedSection from "@/components/ScrollAnimatedSection";
 import OverlayTracker from "@/components/OverlayTracker";
+import WelcomeScreen from "@/components/WelcomeScreen";
 
 export default function Home() {
   return (
     <SmoothScroll>
       <OverlayTracker>
         <main className="relative bg-[#B0B5B9] text-foreground">
+          <WelcomeScreen />
 
           {/* Navigation Header */}
           <Header />

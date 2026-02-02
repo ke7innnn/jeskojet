@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -150,17 +151,20 @@ export default function WindowZoom() {
                     style={{ willChange: "transform" }}
                 >
                     {/* High-resolution window overlay - clean, no effects */}
-                    <img
+                    <Image
                         src="/window-overlay-hd.png"
                         alt="Airplane Window Frame"
-                        className="w-full h-full object-cover"
+                        fill
+                        priority
+                        quality={100}
+                        className="object-cover"
                     />
                 </div>
 
                 {/* Layer 3: The Overlay Text - Enhanced for 3D */}
                 <div
                     ref={textLeftRef}
-                    className="absolute left-[2%] md:left-[5%] top-1/2 -translate-y-1/2 z-30 w-[300px]"
+                    className="absolute left-[2%] md:left-[5%] top-1/2 -translate-y-1/2 z-30 w-[300px] opacity-0"
                     style={{
                         transformStyle: "preserve-3d",
                         willChange: "transform, filter"
@@ -177,7 +181,7 @@ export default function WindowZoom() {
                 {/* Floating Text Right */}
                 <div
                     ref={textRightRef}
-                    className="absolute right-[5%] md:right-[10%] top-1/2 -translate-y-1/2 z-30 w-[300px] text-right"
+                    className="absolute right-[5%] md:right-[10%] top-1/2 -translate-y-1/2 z-30 w-[300px] text-right opacity-0"
                     style={{
                         transformStyle: "preserve-3d",
                         willChange: "transform, filter"
