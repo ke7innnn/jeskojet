@@ -7,27 +7,49 @@ export default function WelcomeScreen({ onComplete }: { onComplete?: () => void 
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
-        // Disable scroll immediately
+        // 1. CSS Lock (Fallback)
         document.body.style.overflow = 'hidden';
         document.documentElement.style.overflow = 'hidden';
 
-        // Wait 2 seconds then start exit
-        const timer = setTimeout(() => {
-            setIsVisible(false);
+        // 2. Aggressive Event Lock (Stops Lenis & System Scroll)
+        const preventScroll = (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        };
 
-            // Wait for exit animation (1.5s) + minimal buffer to complete before enabling scroll
-            setTimeout(() => {
-                document.body.style.overflow = '';
-                document.documentElement.style.overflow = '';
-                if (onComplete) onComplete();
-            }, 2000);
+        // Use capture phase to intercept fully
+        const options = { capture: true, passive: false };
+
+        window.addEventListener('wheel', preventScroll, options);
+        window.addEventListener('touchmove', preventScroll, options);
+        window.addEventListener('keydown', preventScroll, options); // Blocks arrow keys/space
+
+        // UNLOCK after 4 seconds total
+        const unlockTimer = setTimeout(() => {
+            window.removeEventListener('wheel', preventScroll, options);
+            window.removeEventListener('touchmove', preventScroll, options);
+            window.removeEventListener('keydown', preventScroll, options);
+
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+
+            if (onComplete) onComplete();
+        }, 4000);
+
+        // Start fade out at 2 seconds
+        const fadeTimer = setTimeout(() => {
+            setIsVisible(false);
         }, 2000);
 
         return () => {
-            // Safety cleanup
+            window.removeEventListener('wheel', preventScroll, options);
+            window.removeEventListener('touchmove', preventScroll, options);
+            window.removeEventListener('keydown', preventScroll, options);
             document.body.style.overflow = '';
             document.documentElement.style.overflow = '';
-            clearTimeout(timer);
+            clearTimeout(unlockTimer);
+            clearTimeout(fadeTimer);
         };
     }, [onComplete]);
 
