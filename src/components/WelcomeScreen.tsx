@@ -7,15 +7,28 @@ export default function WelcomeScreen({ onComplete }: { onComplete?: () => void 
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
+        // Disable scroll immediately
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+
         // Wait 2 seconds then start exit
         const timer = setTimeout(() => {
             setIsVisible(false);
-            if (onComplete) {
-                setTimeout(onComplete, 1500); // Trigger callback after fade out completes
-            }
+
+            // Wait for exit animation (1.5s) to complete before enabling scroll
+            setTimeout(() => {
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                if (onComplete) onComplete();
+            }, 1500);
         }, 2000);
 
-        return () => clearTimeout(timer);
+        return () => {
+            // Safety cleanup
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            clearTimeout(timer);
+        };
     }, [onComplete]);
 
     return (
