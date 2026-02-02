@@ -29,7 +29,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                 <h1 className="text-6xl md:text-8xl font-heading font-bold tracking-tighter uppercase mb-4 text-white mix-blend-difference">
                     New Season<br />Collection
                 </h1>
-                <p className="text-xl md:text-2xl font-light tracking-[0.2em] uppercase text-gray-300">
+                <p className="text-xl md:text-2xl font-light tracking-[0.2em] uppercase text-white/80">
                     Designed for the bold.
                 </p>
             </motion.div>
@@ -42,7 +42,7 @@ export default function Overlay({ scrollYProgress }: OverlayProps) {
                 <h2 className="text-5xl md:text-7xl font-heading font-medium tracking-wide uppercase text-white mb-2">
                     Sculpted<br />Silhouettes
                 </h2>
-                <p className="text-lg md:text-xl font-light tracking-[0.15em] text-luxury-green-100/80">
+                <p className="text-lg md:text-xl font-light tracking-[0.15em] text-white/80">
                     Premium Fabrics.
                 </p>
             </motion.div>
