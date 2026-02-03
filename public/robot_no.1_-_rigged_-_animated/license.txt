@@ -1,0 +1,11 @@
+Model Information:
+* title:	Robot No.1 - Rigged - Animated
+* source:	https://sketchfab.com/3d-models/robot-no1-rigged-animated-9f8f0c6fc1ce4fc08e19ead884ee4b98
+* author:	ndnguyen3d (https://sketchfab.com/ndnguyen3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Robot No.1 - Rigged - Animated" (https://sketchfab.com/3d-models/robot-no1-rigged-animated-9f8f0c6fc1ce4fc08e19ead884ee4b98) by ndnguyen3d (https://sketchfab.com/ndnguyen3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

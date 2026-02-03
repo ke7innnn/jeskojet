@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${michroma.variable} ${outfit.variable} ${syncopate.variable} antialiased bg-background text-foreground`}>
         {/* Using high-res overlay - no additional effects needed */}
         {children}

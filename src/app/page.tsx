@@ -9,6 +9,9 @@ import ScrollAnimatedSection from "@/components/ScrollAnimatedSection";
 import OverlayTracker from "@/components/OverlayTracker";
 import LoadingScreen from "@/components/LoadingScreen";
 import { LoadingProvider } from "@/context/LoadingContext";
+import OurWork from "@/components/OurWork";
+import Ke7innnSection from "@/components/Ke7innnSection";
+import ContactSection from "@/components/ContactSection";
 
 export default function Home() {
   return (
@@ -45,9 +48,16 @@ export default function Home() {
             </div>
 
             {/* 5. Cream Section - contains eagle and text animation */}
-            <ScrollAnimatedSection>
-              {/* Content will be added here later */}
-            </ScrollAnimatedSection>
+            <ScrollAnimatedSection />
+
+            {/* 6. Our Work Section - appears after eagle animation */}
+            <OurWork />
+
+            {/* 7. kE7INNN Gradient Section */}
+            <Ke7innnSection />
+
+            {/* 8. Contact & Social Media Section */}
+            <ContactSection />
 
             {/* Footer overlay */}
             <div className="absolute bottom-8 left-0 w-full text-center text-xs uppercase tracking-widest text-[#2c3e50]/60 mix-blend-multiply z-20">
